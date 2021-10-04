@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2021, WSO2 Inc. (http://www.wso2.org).
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package org.wso2.identity.integration.test.rest.api.user.authorized.apps.v2;
 
 import io.restassured.RestAssured;
@@ -30,9 +31,9 @@ import javax.xml.xpath.XPathExpressionException;
 import java.rmi.RemoteException;
 
 /**
- * Test class for authorized apps application REST APIs negative paths.
+ * Test class for authorized apps application REST APIs failure paths.
  */
-public class ApplicationNegativeTest extends UserAuthorizedAppsBaseTest {
+public class ApplicationAuthorizedAppsNegativeTest extends UserAuthorizedAppsBaseTest {
 
     private static final String INVALID_APP = "invalid-app";
 
@@ -59,7 +60,7 @@ public class ApplicationNegativeTest extends UserAuthorizedAppsBaseTest {
     }
 
     @Factory(dataProvider = "restAPIUserConfigProvider")
-    public ApplicationNegativeTest(TestUserMode userMode) throws Exception {
+    public ApplicationAuthorizedAppsNegativeTest(TestUserMode userMode) throws Exception {
 
         super.init(userMode);
         this.context = isServer;

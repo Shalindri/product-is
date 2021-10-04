@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2021, WSO2 Inc. (http://www.wso2.org) All Rights Reserved.
+ * Copyright (c) 2021, WSO2 Inc. (http://www.wso2.org).
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -13,6 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
 package org.wso2.identity.integration.test.rest.api.user.authorized.apps.v2;
 
 import io.restassured.RestAssured;
@@ -38,7 +39,7 @@ import static org.wso2.carbon.automation.engine.context.TestUserMode.SUPER_TENAN
 /**
  * Test class for authorized apps application REST APIs success paths.
  */
-public class ApplicationSuccessTest extends UserAuthorizedAppsBaseTest {
+public class ApplicationAuthorizedAppsSuccessTest extends UserAuthorizedAppsBaseTest {
     private String clientIdApp1;
     private String clientIdApp2;
     private String appName1;
@@ -86,7 +87,7 @@ public class ApplicationSuccessTest extends UserAuthorizedAppsBaseTest {
     }
 
     @Factory(dataProvider = "restAPIUserConfigProvider")
-    public ApplicationSuccessTest(TestUserMode userMode) throws Exception {
+    public ApplicationAuthorizedAppsSuccessTest(TestUserMode userMode) throws Exception {
 
         super.init(userMode);
         this.context = isServer;
