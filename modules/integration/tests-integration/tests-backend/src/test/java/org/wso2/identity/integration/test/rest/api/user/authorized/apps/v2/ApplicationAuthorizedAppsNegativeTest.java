@@ -1,17 +1,19 @@
 /*
- * Copyright (c) 2021, WSO2 Inc. (http://www.wso2.org).
+ * Copyright (c) 2021, WSO2 Inc. (http://www.wso2.com).
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
+ * WSO2 Inc. licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License.
  * You may obtain a copy of the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
  */
 
 package org.wso2.identity.integration.test.rest.api.user.authorized.apps.v2;
@@ -36,12 +38,13 @@ import java.rmi.RemoteException;
 public class ApplicationAuthorizedAppsNegativeTest extends UserAuthorizedAppsBaseTest {
 
     private static final String INVALID_APP = "invalid-app";
+    private static final String AU = "invalid-app";
 
     @BeforeClass(alwaysRun = true)
     public void init() throws XPathExpressionException, RemoteException {
 
         super.testInit(API_VERSION, swaggerDefinition, tenant);
-        initUrls("users");
+        initUrls("me");
     }
 
     @AfterMethod(alwaysRun = true)
@@ -72,7 +75,8 @@ public class ApplicationAuthorizedAppsNegativeTest extends UserAuthorizedAppsBas
     @Test
     public void testDeleteAuthorizedApps() throws Exception {
 
-        getResponseOfDelete(this.userApplicationEndpointUri + INVALID_APP + "/tokens")
+        String path = String.format(this.userApplicationEndpointUri, INVALID_APP);
+        getResponseOfDelete(path)
                 .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_NO_CONTENT)

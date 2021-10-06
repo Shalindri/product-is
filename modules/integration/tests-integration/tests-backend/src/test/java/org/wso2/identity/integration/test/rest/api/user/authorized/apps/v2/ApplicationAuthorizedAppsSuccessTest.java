@@ -1,17 +1,19 @@
 /*
- * Copyright (c) 2021, WSO2 Inc. (http://www.wso2.org).
+ * Copyright (c) 2021, WSO2 Inc. (http://www.wso2.com).
  *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
+ * WSO2 Inc. licenses this file to you under the Apache License,
+ * Version 2.0 (the "License"); you may not use this file except
+ * in compliance with the License.
  * You may obtain a copy of the License at
  *
  * http://www.apache.org/licenses/LICENSE-2.0
  *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
  */
 
 package org.wso2.identity.integration.test.rest.api.user.authorized.apps.v2;
@@ -57,7 +59,7 @@ public class ApplicationAuthorizedAppsSuccessTest extends UserAuthorizedAppsBase
     public void init() throws XPathExpressionException, RemoteException {
 
         super.testInit(API_VERSION, swaggerDefinition, tenant);
-        initUrls("users");
+        initUrls("me");
         registerApplication(appName1, clientIdApp1, CLIENT_SECRET);
         registerApplication(appName2, clientIdApp2, CLIENT_SECRET);
         getTokenFromPasswordGrant(clientIdApp1, CLIENT_SECRET);
@@ -123,7 +125,8 @@ public class ApplicationAuthorizedAppsSuccessTest extends UserAuthorizedAppsBase
     @Test(dependsOnMethods = {"testListAuthorizedApps"})
     public void testDeleteIssuedTokensByAppId() throws Exception {
 
-        getResponseOfDelete(this.userApplicationEndpointUri + appId1 + "/tokens")
+        String path = String.format(this.userApplicationEndpointUri, appId1);
+        getResponseOfDelete(path)
                 .then()
                 .assertThat()
                 .statusCode(HttpStatus.SC_NO_CONTENT)
