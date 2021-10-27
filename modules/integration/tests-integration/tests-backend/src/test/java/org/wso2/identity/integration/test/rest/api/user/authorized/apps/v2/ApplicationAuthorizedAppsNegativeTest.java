@@ -38,7 +38,7 @@ import java.rmi.RemoteException;
  */
 public class ApplicationAuthorizedAppsNegativeTest extends UserAuthorizedAppsBaseTest {
 
-    private static final String INVALID_APP = "invalid-app";
+    private static final String INVALID_APP_ID = "invalid-app-id";
 
     @BeforeClass(alwaysRun = true)
     public void init() throws XPathExpressionException, RemoteException {
@@ -81,11 +81,11 @@ public class ApplicationAuthorizedAppsNegativeTest extends UserAuthorizedAppsBas
     @Test
     public void testDeleteAuthorizedApps() throws Exception {
 
-        String path = String.format(this.userApplicationEndpointUri, INVALID_APP);
+        String path = String.format(this.userApplicationEndpointUri, INVALID_APP_ID);
         getResponseOfDelete(path)
                 .then()
                 .assertThat()
-                .statusCode(HttpStatus.SC_NO_CONTENT)
+                .statusCode(HttpStatus.SC_NOT_FOUND)
                 .log().ifValidationFails();
     }
 
